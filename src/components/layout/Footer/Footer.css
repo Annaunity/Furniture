@@ -1,0 +1,160 @@
+.footer {
+  background-color: #2a2a2a;
+  color: white;
+  padding: 60px 0 30px;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  margin-bottom: 40px;
+}
+
+.footer-column {
+  padding-right: 20px;
+}
+
+.footer-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #d4a574;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+}
+
+.footer-address {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.address-lines {
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.address-lines p {
+  margin-bottom: 2px;
+}
+
+.contact-lines {
+  line-height: 1.4;
+}
+
+.contact-lines p {
+  margin-bottom: 8px;
+}
+
+.contact-lines p:last-child {
+  margin-bottom: 0;
+}
+
+/* Форма */
+.footer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.footer-input,
+.footer-textarea {
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: white;
+  transition: border 0.3s ease;
+  width: 100%;
+}
+
+.footer-input::placeholder,
+.footer-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+.footer-input:focus,
+.footer-textarea:focus {
+  outline: none;
+  border-color: #d4a574;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.footer-input.error {
+  border-color: #ff6b6b;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.footer-input.error:focus {
+  border-color: #ff6b6b;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.footer-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.error-message {
+  font-size: 0.75rem;
+  color: #ff6b6b;
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+}
+
+.footer-submit-btn {
+  padding: 14px 24px;
+  background: transparent;
+  border: 1px solid #d4a574;
+  color: #d4a574;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.footer-submit-btn:hover:not(:disabled) {
+  background: #d4a574;
+  color: #2a2a2a;
+}
+
+.footer-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.footer-success {
+  color: #4CAF50;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.copyright {
+  opacity: 0.8;
+}

@@ -1,0 +1,313 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Gabriela&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Gabriela&display=swap');
+:root {
+  --color-bg-light: #f9f9f9;
+  --color-bg-card: #ffffff;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #666666;
+  --color-text-light: #999999;
+  --color-accent-gold: #b18a5f;
+  --color-accent-gold-dark: #9c7852;
+  --color-border-light: #e0e0e0;
+  --color-border-medium: #d4d4d4;
+  --color-overlay: rgba(0, 0, 0, 0.03);
+
+  /* Шрифты */
+  --font-heading: 'Gabriela', serif;
+  --font-body: 'Calibri', Arial, sans-serif;
+
+  /* Тени */
+  --shadow-subtle: 0 2px 10px rgba(0, 0, 0, 0.02);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 6px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Базовые стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-light);
+  line-height: 1.7;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Шрифты */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-primary);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.8rem; }
+h3 { font-size: 2.2rem; }
+h4 { font-size: 1.8rem; }
+h5 { font-size: 1.4rem; }
+h6 { font-size: 1.1rem; }
+
+p, li, span, div {
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+.text-lead {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+}
+
+/* Лайаут и контейнеры */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Утилитные классы */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-uppercase { 
+  text-transform: uppercase; 
+  letter-spacing: 1.5px; 
+  font-size: 0.85rem; 
+  font-weight: 400;
+}
+
+.font-light { font-weight: 300; }
+.font-regular { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-bold { font-weight: 700; }
+
+.text-gold { color: var(--color-accent-gold); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-light { color: var(--color-text-light); }
+
+.bg-white { background-color: var(--color-bg-card); }
+.bg-light { background-color: var(--color-bg-light); }
+
+main {
+  padding-top: 80px;
+}
+
+/* Ссылки */
+a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 400;
+}
+
+a:hover {
+  color: var(--color-accent-gold);
+}
+
+/* Кнопки */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-medium);
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.btn:hover {
+  border-color: var(--color-accent-gold);
+  color: var(--color-accent-gold);
+}
+
+.btn-primary {
+  background-color: var(--color-accent-gold);
+  color: white;
+  border: 1px solid var(--color-accent-gold);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-gold-dark);
+  border-color: var(--color-accent-gold-dark);
+  color: white;
+}
+
+.btn-secondary {
+  border-color: var(--color-border-medium);
+  color: var(--color-text-secondary);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-accent-gold);
+  color: var(--color-accent-gold);
+}
+
+/* Карточки */
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Декоративные элементы */
+.divider {
+  height: 1px;
+  background-color: var(--color-border-light);
+  margin: 40px 0;
+  width: 100%;
+}
+
+.divider-short {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-accent-gold);
+  margin: 20px 0;
+}
+
+/* Формы */
+input, textarea, select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border-light);
+  border-radius: 0;
+  background-color: var(--color-bg-card);
+  transition: all 0.3s ease;
+  color: var(--color-text-primary);
+  width: 100%;
+  appearance: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-accent-gold);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-light);
+  font-weight: 300;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-bg-light);
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* Стили для формы с ошибками */
+.form-input.error {
+  border-color: #dc3545;
+  background-color: rgba(220, 53, 69, 0.02);
+}
+
+.error-message {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: #dc3545;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Сообщение об успешной отправке */
+.success-message {
+  background-color: rgba(40, 167, 69, 0.1);
+  border: 1px solid #28a745;
+  color: #28a745;
+  padding: 12px 16px;
+  margin: 15px 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  text-align: center;
+  border-radius: 0;
+  animation: fadeIn 0.3s ease;
+}

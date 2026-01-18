@@ -1,0 +1,163 @@
+.partners-page {
+  min-height: 100vh;
+  background-color: var(--color-bg-light);
+  width: 100%;
+}
+
+.partners-simple-header {
+  padding: 40px 0 60px;
+  text-align: center;
+  background-color: var(--color-bg-light);
+}
+
+.partners-header-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.partners-main-title {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+  margin-bottom: 25px;
+  letter-spacing: -1px;
+}
+
+.partners-title-divider {
+  width: 130px;
+  height: 1.5px;
+  background-color: var(--color-accent-gold);
+  margin: 0 auto;
+}
+
+/* Сетка партнеров по 4 штуки */
+.partners-grid-section {
+  padding: 10px 0 100px;
+  background-color: var(--color-bg-light);
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.partner-card {
+  position: relative;
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  height: 200px;
+}
+
+.partner-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent-gold);
+}
+
+.partner-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.partner-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partner-logo-letter {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--color-accent-gold);
+  opacity: 0.2;
+}
+
+.partner-content {
+  position: relative;
+  z-index: 2;
+}
+
+.partner-name {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.partner-divider {
+  width: 30px;
+  height: 1px;
+  background-color: var(--color-accent-gold);
+  margin: 10px 0 15px;
+}
+
+.partner-website {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.website-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.website-link:hover {
+  color: var(--color-accent-gold);
+}
+
+.partner-hover-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(135deg, var(--color-accent-gold) 0%, var(--color-accent-gold-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+}
+
+.partner-card:hover .partner-hover-layer {
+  height: 100%;
+}
+
+.view-website {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease 0.1s;
+}
+
+.partner-card:hover .view-website {
+  opacity: 1;
+  transform: translateY(0);
+}
