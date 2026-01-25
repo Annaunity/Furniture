@@ -49,13 +49,13 @@ const Footer = () => {
     
     setIsSubmitting(true);
     
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 800));
     
     setSubmitSuccess(true);
     setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' });
     setFormErrors({});
     
-    setTimeout(() => setSubmitSuccess(false), 5000);
+    setTimeout(() => setSubmitSuccess(false), 4000);
     setIsSubmitting(false);
   };
 
@@ -75,7 +75,6 @@ const Footer = () => {
               <div className="contact-lines">
                 <p className="footer-contact">Электронная почта: info@scandolamobili.it</p>
                 <p className="footer-contact">Телефон: +39 045 7050215</p>
-                <p className="footer-contact">Факс: +39 045 6780374</p>
               </div>
             </div>
           </div>
@@ -91,7 +90,6 @@ const Footer = () => {
               <div className="contact-lines">
                 <p className="footer-contact">Электронная почта: info@scandolamobili.ru</p>
                 <p className="footer-contact">Телефон: 8 921 7726407</p>
-                <p className="footer-contact">Факс: 8 921 7726407</p>
               </div>
             </div>
           </div>
@@ -100,12 +98,13 @@ const Footer = () => {
           <div className="footer-column">
             <h3 className="footer-title">Связаться с нами</h3>
             <form className="footer-form" onSubmit={handleSubmit} noValidate>
-              <div className="form-row">
-                <div className="form-group">
+              {/* Первая строка: Имя+Фамилия и Email */}
+              <div className="form-row-top">
+                <div className="form-group full-name">
                   <input
                     type="text"
                     name="firstName"
-                    placeholder="Имя"
+                    placeholder="Имя и Фамилия"
                     value={formData.firstName}
                     onChange={handleInputChange}
                     disabled={isSubmitting}
@@ -118,10 +117,10 @@ const Footer = () => {
                 
                 <div className="form-group">
                   <input
-                    type="text"
-                    name="lastName"
-                    placeholder="Фамилия"
-                    value={formData.lastName}
+                    type="email"
+                    name="email"
+                    placeholder="Электронная почта"
+                    value={formData.email}
                     onChange={handleInputChange}
                     disabled={isSubmitting}
                     className="footer-input"
@@ -129,56 +128,52 @@ const Footer = () => {
                 </div>
               </div>
               
-              <div className="form-group">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Электронная почта"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  disabled={isSubmitting}
-                  className="footer-input"
-                />
+              {/* Вторая строка: Телефон, Сообщение и Кнопка */}
+              <div className="form-row-middle">
+                <div className="form-group">
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Телефон"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    disabled={isSubmitting}
+                    className={`footer-input ${formErrors.phone ? 'error' : ''}`}
+                  />
+                  {formErrors.phone && (
+                    <span className="error-message">{formErrors.phone}</span>
+                  )}
+                </div>
+                
+                <div className="form-group">
+                  <textarea
+                    name="message"
+                    placeholder="Сообщение"
+                    rows="1"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    disabled={isSubmitting}
+                    className="footer-textarea"
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="footer-submit-btn"
+                  >
+                    {isSubmitting ? '...' : 'Отправить'}
+                  </button>
+                </div>
               </div>
               
-              <div className="form-group">
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Телефон"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  disabled={isSubmitting}
-                  className={`footer-input ${formErrors.phone ? 'error' : ''}`}
-                />
-                {formErrors.phone && (
-                  <span className="error-message">{formErrors.phone}</span>
+              {/* Успешное сообщение */}
+              <div className="form-row-bottom">
+                {submitSuccess && (
+                  <p className="footer-success">Сообщение отправлено!</p>
                 )}
               </div>
-              
-              <div className="form-group">
-                <textarea
-                  name="message"
-                  placeholder="Сообщение"
-                  rows="4"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  disabled={isSubmitting}
-                  className="footer-textarea"
-                />
-              </div>
-              
-              <button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="footer-submit-btn"
-              >
-                {isSubmitting ? 'Отправка...' : 'Отправить'}
-              </button>
-              
-              {submitSuccess && (
-                <p className="footer-success">Сообщение отправлено!</p>
-              )}
             </form>
           </div>
         </div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import './Partners.css';
 
 const Partners = () => {
@@ -17,8 +16,7 @@ const Partners = () => {
       <div className="partners-simple-header">
         <div className="container">
           <div className="partners-header-content">
-            <h1 className="partners-main-title">Партнеры</h1>
-            <div className="partners-title-divider"></div>
+            <h1 className="partners-main-title">ПАРТНЕРЫ</h1>
           </div>
         </div>
       </div>
@@ -32,13 +30,8 @@ const Partners = () => {
                 className="partner-card"
               >
                 <div className="partner-card-inner">
-                  <div className="partner-logo">
-                    <div className="partner-logo-letter">{partner.logo}</div>
-                  </div>
-                  
                   <div className="partner-content">
                     <h4 className="partner-name">{partner.name}</h4>
-                    <div className="partner-divider"></div>
                     <p className="partner-website">
                       <a 
                         href={`https://${partner.url}`}

@@ -89,7 +89,7 @@ const About = () => {
         <div className="about-hero-content">
           <div className="about-hero-text-content">
             <div className="about-hero-subtitle">О бренде</div>
-            <h1 className="about-hero-title">Scandola</h1>
+            <h1 className="about-hero-title">SCANDOLA</h1>
             <div className="about-hero-divider"></div>
             <p className="about-hero-description">
               50 лет итальянского мастерства и инноваций в производстве мебели
@@ -104,7 +104,7 @@ const About = () => {
           <div className="about-section-grid">
             <div className="about-section-content about-animate-on-scroll">
               <div className="year-large">1976</div>
-              <h2 className="about-section-title">Начало пути</h2>
+              <h2 className="about-section-title">НАЧАЛО ПУТИ</h2>
               <div className="about-section-divider"></div>
               <div className="about-text-content">
                 <p className="about-lead-text">
@@ -152,11 +152,11 @@ const About = () => {
             </div>
             
             <div className="about-section-content about-animate-on-scroll">
-              <h2 className="about-section-title">Рост и развитие</h2>
+              <h2 className="about-section-title">РОСТ И РАЗВИТИЕ</h2>
               <div className="about-section-divider"></div>
               <div className="about-text-content">
                 <p>
-                  Первый шаг - каталоги для продажи на местном уровне до расширения в Италии и за рубежом, амбициозные проекты, которые смотрят в будущее.
+                    Первый шаг - каталоги для продажи на местном уровне до расширения в Италии и за рубежом, амбициозные проекты, которые смотрят в будущее.
                 </p>
                 <div className="about-highlight-text">
                   <p>
@@ -176,7 +176,7 @@ const About = () => {
       <section className="about-content-section about-full-width">
         <div className="container">
           <div className="about-philosophy-content about-animate-on-scroll">
-            <h2 className="about-philosophy-title">Философия бренда</h2>
+            <h2 className="about-philosophy-title">ФИЛОСОФИЯ БРЕНДА</h2>
             <div className="about-philosophy-divider"></div>
             <p className="about-philosophy-text">
               Scandola благодаря Карло - компания, которая делает ставку на 100% итальянское ремесло и искусство, любит и ценит природу, творит каждый день и с огромной страстью. 
@@ -204,7 +204,7 @@ const About = () => {
       <section className="about-content-section about-section-4">
         <div className="container">
           <div className="about-wood-section">
-            <h2 className="about-wood-title about-animate-on-scroll">Дерево — главный герой</h2>
+            <h2 className="about-wood-title about-animate-on-scroll">ДЕРЕВО - ГЛАВНЫЙ ГЕРОЙ</h2>
             <div className="about-wood-divider"></div>
             <p className="about-wood-text about-animate-on-scroll">
               В течение 50 лет дерево – это главный герой для мебельной компании Scandola, сознательный и ответственный выбор драгоценного природного дара.
@@ -236,11 +236,11 @@ const About = () => {
       <section className="about-content-section about-section-5">
         <div className="container">
           <div className="about-certificates-section">
-            <h2 className="about-certificates-title about-animate-on-scroll">Сертификаты</h2>
+            <h2 className="about-certificates-title about-animate-on-scroll">СЕРТИФИКАТЫ</h2>
             <div className="about-certificates-divider"></div>
-            <p className="about-certificates-description about-animate-on-scroll">
+            {/* <p className="about-certificates-description about-animate-on-scroll">
               Наша приверженность качеству подтверждена международными сертификатами
-            </p>
+            </p> */}
             
             <div className="about-certificates-grid">
               {certificates.map((cert, index) => (

@@ -88,13 +88,22 @@ const Contacts = () => {
       <section className="contact-section">
         <div className="container">
           <div className="contact-header text-center">
-            <h2 className="contact-title">Свяжитесь с нами</h2>
-            <div className="contact-divider"></div>
+            <h2 className="contact-title">СВЯЖИТЕСЬ С НАМИ</h2>
           </div>
 
           <div className="contact-content">
             <div className="contact-info-side">
               <div className="contact-details">
+                <div className="contact-detail-item">
+                  <div className="contact-icon">📍</div>
+                  <div className="contact-detail-content">
+                    <div className="contact-label">Адрес</div>
+                    <div className="contact-value">
+                      г. Санкт-Петербург, ул. Зверинская, д. 12
+                    </div>
+                  </div>
+                </div>
+                
                 <div className="contact-detail-item">
                   <div className="contact-icon">📞</div>
                   <div className="contact-detail-content">

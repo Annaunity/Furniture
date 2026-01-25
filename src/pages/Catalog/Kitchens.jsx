@@ -1,41 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import './Catalog.css';
 
-// Импортируем изображения напрямую
-import c1 from '../../assets/images/c1.jpg';
-import c1_1 from '../../assets/images/c1.1.jpg';
-import c1_2 from '../../assets/images/c1.2.jpg';
-import c2 from '../../assets/images/c2.jpg';
-import c2_1 from '../../assets/images/c2.1.jpg';
-import c2_2 from '../../assets/images/c2.2.jpg';
-
 const Kitchens = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [kitchenImages, setKitchenImages] = useState([]);
 
-  // Массив с импортированными изображениями
-  const kitchenImages = [
-    { id: 1, src: c1, alt: 'Кухня Scandola' },
-    { id: 2, src: c1_1, alt: 'Кухня Scandola' },
-    { id: 3, src: c1_2, alt: 'Кухня Scandola' },
-    { id: 4, src: c2, alt: 'Кухня Scandola' },
-    { id: 5, src: c2_1, alt: 'Кухня Scandola' },
-    { id: 6, src: c2_2, alt: 'Кухня Scandola' },
-  ];
-
-  // Имитация загрузки
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-    
-    return () => clearTimeout(timer);
-  }, []);
+    // Динамически импортируем все изображения из папки kitchen
+    const importAllImages = (r) => {
+      return r.keys().map((key, index) => ({
+        id: index + 1,
+        src: r(key),
+        alt: 'Кухня Scandola'
+      }));
+    };
 
-  // Функция для fallback изображения
-  const handleImageError = (e) => {
-    console.error('Ошибка загрузки изображения:', e.target.src);
-    e.target.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f5f5f5"/></svg>';
-  };
+    // Импортируем все изображения из папки kitchen
+    const images = importAllImages(
+      require.context('../../assets/images/kitchen', false, /\.(jpg|jpeg|png|gif)$/)
+    );
+    
+    // Сортируем по имени файла, если нужно
+    const sortedImages = images.sort((a, b) => {
+      const getNumber = (src) => {
+        const match = src.default?.match(/kitchen(\d+)_(\d+)/) || 
+                     src.match(/kitchen(\d+)_(\d+)/);
+        return match ? parseInt(match[1]) * 1000 + parseInt(match[2]) : 0;
+      };
+      
+      const numA = getNumber(a.src);
+      const numB = getNumber(b.src);
+      return numA - numB;
+    });
+
+    setKitchenImages(sortedImages);
+    setIsLoading(false);
+  }, []);
 
   if (isLoading) {
     return (
@@ -53,28 +53,17 @@ const Kitchens = () => {
     <div className="catalog-page">
       <div className="container">
         <section className="catalog-hero-section">
-          <div className="catalog-hero-content">
-            <h1 className="page-title">Кухни</h1>
-            <p className="page-subtitle">
-              Итальянские кухни от фабрики Scandola
-            </p>
-          </div>
+          <h1 className="page-title">КУХНИ</h1>
         </section>
-        <div className="catalog-divider"></div>
+        
         <div className="catalog-gallery">
-          {kitchenImages.map((image, index) => (
-            <div 
-              key={image.id}
-              className="catalog-item animate-fade-in-scale"
-              style={{ animationDelay: `${index * 0.05}s` }}
-            >
+          {kitchenImages.map((image) => (
+            <div key={image.id} className="catalog-item">
               <div className="catalog-image-container">
                 <img 
-                  src={image.src}
+                  src={image.src.default || image.src}
                   alt={image.alt}
                   className="catalog-image"
-                  onError={handleImageError}
-                  loading="lazy"
                 />
               </div>
             </div>

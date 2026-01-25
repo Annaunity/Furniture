@@ -1,4 +1,3 @@
-/* Основные стили страницы About */
 .about-page {
   min-height: 100vh;
   background-color: var(--color-bg-light);
@@ -32,11 +31,6 @@
   object-fit: cover;
   object-position: center;
   filter: brightness(0.8) contrast(1.1);
-  transition: transform 8s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.about-hero-section:hover .about-hero-image {
-  transform: scale(1.05);
 }
 
 .about-hero-overlay {
@@ -76,7 +70,7 @@
 }
 
 .about-hero-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);;
   font-size: 5rem;
   font-weight: 400;
   color: white;
@@ -86,16 +80,9 @@
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.about-hero-divider {
-  width: 80px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #C4B5A3, transparent);
-  margin: 30px auto;
-}
-
 .about-hero-description {
   font-family: var(--font-body);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
@@ -156,7 +143,7 @@
 }
 
 .about-section-title {
-  font-family: var(--font-heading);
+  font-family:var(--font-body);
   font-size: 3rem;
   font-weight: 400;
   color: var(--color-text-primary);
@@ -167,22 +154,16 @@
   z-index: 2;
 }
 
-.about-section-divider {
-  width: 60px;
-  height: 1px;
-  background-color: var(--color-accent-gold);
-  margin: 25px 0 30px 0;
-}
-
 .about-text-content {
   font-family: var(--font-body);
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   line-height: 1.8;
   color: var(--color-text-secondary);
 }
 
 .about-text-content p {
   margin-bottom: 25px;
+  text-indent: 1.5rem;
 }
 
 .about-text-content p:last-child {
@@ -190,16 +171,15 @@
 }
 
 .about-lead-text {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 300;
-  line-height: 1.7;
-  color: var(--color-text-primary);
-  margin-bottom: 30px;
-  padding-left: 20px;
-  border-left: 2px solid var(--color-accent-gold);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin-bottom: 25px;
+  text-indent: 1.5rem;
 }
 
-/* Изображения с красивыми углами */
+/* Изображения */
 .about-section-image {
   position: relative;
   height: 500px;
@@ -222,45 +202,7 @@
   z-index: 1;
 }
 
-/* Декоративные уголки для изображений */
-.image-corner-1,
-.image-corner-2,
-.image-corner-3,
-.image-corner-4 {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  z-index: 2;
-  border-style: solid;
-  border-color: var(--color-accent-gold);
-  opacity: 0.3;
-}
-
-.image-corner-1 {
-  top: 20px;
-  left: 20px;
-  border-width: 2px 0 0 2px;
-}
-
-.image-corner-2 {
-  top: 20px;
-  right: 20px;
-  border-width: 2px 2px 0 0;
-}
-
-.image-corner-3 {
-  bottom: 20px;
-  left: 20px;
-  border-width: 0 0 2px 2px;
-}
-
-.image-corner-4 {
-  bottom: 20px;
-  right: 20px;
-  border-width: 0 2px 2px 0;
-}
-
-/* Секция 2: Hазвитие */
+/* Секция 2: Развитие */
 .about-reverse-grid {
   direction: rtl;
 }
@@ -270,14 +212,12 @@
 }
 
 .about-highlight-text {
-  background: linear-gradient(135deg, rgba(196, 181, 163, 0.08) 0%, rgba(196, 181, 163, 0.03) 100%);
-  padding: 25px;
-  margin: 30px 0;
-  border-radius: 2px;
-  font-style: italic;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: var(--color-text-primary);
+  padding: 0;
+  margin: 25px 0;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  text-indent: 1.5rem;
 }
 
 /* Секция 3: Философия */
@@ -295,20 +235,13 @@
 }
 
 .about-philosophy-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 3.5rem;
   font-weight: 400;
   color: white;
   margin-bottom: 25px;
   letter-spacing: -0.5px;
   line-height: 1.2;
-}
-
-.about-philosophy-divider {
-  width: 80px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-accent-gold), transparent);
-  margin: 30px auto 40px;
 }
 
 .about-philosophy-text {
@@ -338,7 +271,7 @@
   font-family: var(--font-heading);
   font-size: 3.5rem;
   font-weight: 400;
-  color: var(--color-accent-gold);
+  color: #ecdac8;
   line-height: 1;
   margin-bottom: 10px;
   display: flex;
@@ -370,20 +303,13 @@
 }
 
 .about-wood-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 3rem;
   font-weight: 400;
   color: var(--color-text-primary);
   margin-bottom: 20px;
   letter-spacing: -0.5px;
   line-height: 1.2;
-}
-
-.about-wood-divider {
-  width: 80px;
-  height: 1px;
-  background-color: var(--color-accent-gold);
-  margin: 25px auto 30px;
 }
 
 .about-wood-text {
@@ -414,7 +340,6 @@
   background-size: cover;
   background-position: center;
   transition: all 0.4s ease;
-  border-left: 4px solid;
 }
 
 .about-wood-card:hover {
@@ -471,20 +396,13 @@
 }
 
 .about-certificates-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 3rem;
   font-weight: 400;
   color: var(--color-text-primary);
   margin-bottom: 20px;
   letter-spacing: -0.5px;
   line-height: 1.2;
-}
-
-.about-certificates-divider {
-  width: 80px;
-  height: 1px;
-  background-color: var(--color-accent-gold);
-  margin: 25px auto 30px;
 }
 
 .about-certificates-description {
@@ -507,13 +425,12 @@
 .about-certificate-card {
   position: relative;
   overflow: hidden;
-  border-radius: 2px;
-  transition: all 0.4s ease;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--color-bg-card);
   padding: 20px;
+  border: 1px solid var(--color-border-light);
 }
 
 .certificate-image-container {
@@ -532,7 +449,6 @@
   overflow: hidden;
   background-color: white;
   border: 1px solid var(--color-border-light);
-  transition: all 0.3s ease;
 }
 
 .certificate-img {
@@ -541,87 +457,13 @@
   object-fit: contain;
   object-position: center;
   padding: 15px;
-  transition: transform 0.6s ease;
-  background-color: white;
 }
 
-.certificate-image-wrapper::before,
-.certificate-image-wrapper::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-style: solid;
-  border-color: var(--color-accent-gold);
-  opacity: 0.3;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.certificate-image-wrapper::before {
-  top: 10px;
-  left: 10px;
-  border-width: 1px 0 0 1px;
-}
-
-.certificate-image-wrapper::after {
-  top: 10px;
-  right: 10px;
-  border-width: 1px 1px 0 0;
-}
-
-.certificate-image-wrapper > :first-child::before,
-.certificate-image-wrapper > :first-child::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-style: solid;
-  border-color: var(--color-accent-gold);
-  opacity: 0.3;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.certificate-image-wrapper > :first-child::before {
-  bottom: 10px;
-  left: 10px;
-  border-width: 0 0 1px 1px;
-}
-
-.certificate-image-wrapper > :first-child::after {
-  bottom: 10px;
-  right: 10px;
-  border-width: 0 1px 1px 0;
-}
-
-.about-certificate-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-hover);
-}
-
-.about-certificate-card:hover .certificate-img {
-  transform: scale(1.05);
-}
-
-.about-certificate-card:hover .certificate-image-wrapper {
-  border-color: var(--color-accent-gold);
-}
-
-/* Разные размеры для сертификатов в порядке 1-3-2 */
-.certificate-item-0 {
-  height: 380px;
-  grid-column: 1;
-}
-
-.certificate-item-1 {
-  height: 420px;
-  grid-column: 2;
-}
-
+/* Одинаковый размер для всех сертификатов */
+.certificate-item-0,
+.certificate-item-1,
 .certificate-item-2 {
-  height: 360px;
-  grid-column: 3;
+  height: 300px;
 }
 
 /* Анимации */
