@@ -94,28 +94,46 @@ const Contacts = () => {
           <div className="contact-content">
             <div className="contact-info-side">
               <div className="contact-details">
-                <div className="contact-detail-item">
-                  <div className="contact-icon">📍</div>
-                  <div className="contact-detail-content">
-                    <div className="contact-label">Адрес</div>
-                    <div className="contact-value">
-                      г. Санкт-Петербург, ул. Зверинская, д. 12
+                {/* Адрес с картой */}
+                <div className="contact-detail-item contact-detail-item-with-map">
+                  <div className="contact-header-row">
+                    <div className="contact-icon">📍</div>
+                    <div className="contact-label">Адрес:</div>
+                    <div className="contact-value">г. Санкт-Петербург, ул. Зверинская, д. 12</div>
+                  </div>
+                  
+                  {/* Карта под адресом */}
+                  <div className="inline-map-container">
+                    <div className="map-wrapper">
+                      <div style={{ position: 'relative', overflow: 'hidden' }}>
+                        <iframe 
+                          src="https://yandex.ru/map-widget/v1/?ll=30.296159%2C59.953380&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NzQwNTE1MBJQ0KDQvtGB0YHQuNGPLCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsywg0JfQstC10YDQuNC90YHQutCw0Y8g0YPQu9C40YbQsCwgMTIiCg2HXvJBFULQb0I%2C&z=16.88" 
+                          width="100%"
+                          height="200"
+                          frameBorder="1"
+                          allowFullScreen="true"
+                          style={{ position: 'relative', border: 'none' }}
+                          title="Карта - Scandola, Санкт-Петербург"
+                        ></iframe>
+                      </div>
                     </div>
                   </div>
                 </div>
                 
+                {/* Телефон  */}
                 <div className="contact-detail-item">
-                  <div className="contact-icon">📞</div>
-                  <div className="contact-detail-content">
-                    <div className="contact-label">Телефон</div>
+                  <div className="contact-header-row">
+                    <div className="contact-icon">📞</div>
+                    <div className="contact-label">Телефон:</div>
                     <div className="contact-value">8 921 7726407</div>
                   </div>
                 </div>
                 
+                {/* Email  */}
                 <div className="contact-detail-item">
-                  <div className="contact-icon">✉️</div>
-                  <div className="contact-detail-content">
-                    <div className="contact-label">Email</div>
+                  <div className="contact-header-row">
+                    <div className="contact-icon">✉️</div>
+                    <div className="contact-label">Email:</div>
                     <div className="contact-value">info@scandolamobili.ru</div>
                   </div>
                 </div>

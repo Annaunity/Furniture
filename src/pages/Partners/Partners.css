@@ -17,7 +17,7 @@
 }
 
 .partners-main-title {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: 2.5rem;
   font-weight: 400;
   color: var(--color-text-primary);

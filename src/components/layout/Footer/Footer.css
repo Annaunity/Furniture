@@ -18,8 +18,9 @@
 }
 
 .footer-title {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: 1.15rem;
+  margin-top: 15px;
   margin-bottom: 12px;
   color: #222;
   font-weight: 600;

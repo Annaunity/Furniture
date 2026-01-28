@@ -20,8 +20,9 @@
 /* Стрелка для скролла вниз */
 .scroll-down-arrow {
   position: absolute;
-  bottom: 120px;
-  right: 20px;
+  left: 50%;
+  bottom: 100px;
+  transform: translateX(-50%); 
   z-index: 10;
   width: 60px;
   height: 60px;

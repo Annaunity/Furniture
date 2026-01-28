@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import './assets/styles/globals.css';
 
 import Header from './components/layout/Header/Header';
@@ -15,28 +15,37 @@ import Bedrooms from './pages/Catalog/Bedrooms';
 import Kitchens from './pages/Catalog/Kitchens';
 import Living from './pages/Catalog/Living';
 
+const AppContent = () => {
+  const location = useLocation();
+  const showFooter = location.pathname !== '/contacts';
+  
+  return (
+    <div className="App">
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/intro" element={<Intro />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/partners" element={<Partners />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/catalog/additional" element={<Additional />} />
+          <Route path="/catalog/bathrooms" element={<Bathrooms />} />
+          <Route path="/catalog/bedrooms" element={<Bedrooms />} />
+          <Route path="/catalog/kitchens" element={<Kitchens />} />
+          <Route path="/catalog/living" element={<Living />} />
+        </Routes>
+      </main>
+      {showFooter && <Footer />}
+    </div>
+  );
+};
+
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/intro" element={<Intro />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/partners" element={<Partners />} />
-            <Route path="/contacts" element={<Contacts />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/catalog/additional" element={<Additional />} />
-            <Route path="/catalog/bathrooms" element={<Bathrooms />} />
-            <Route path="/catalog/bedrooms" element={<Bedrooms />} />
-            <Route path="/catalog/kitchens" element={<Kitchens />} />
-            <Route path="/catalog/living" element={<Living />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <AppContent />
     </Router>
   );
 }

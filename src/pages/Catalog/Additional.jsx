@@ -106,7 +106,7 @@ const Additional = () => {
         {sections.map((section, sectionIndex) => (
           <div key={sectionIndex} className="catalog-section">
             <section className="catalog-hero-section">
-              <h1 className="page-title">{section.title}</h1>
+              <h1 className="page-title-additional">{section.title}</h1>
             </section>
             
             <div className="catalog-gallery">

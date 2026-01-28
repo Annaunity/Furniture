@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Footer.css';
 
-const Footer = () => {
+const Footer = ({ visible = true }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -58,6 +58,10 @@ const Footer = () => {
     setTimeout(() => setSubmitSuccess(false), 4000);
     setIsSubmitting(false);
   };
+
+  if (!visible) {
+    return null;
+  }
 
   return (
     <footer className="footer">
