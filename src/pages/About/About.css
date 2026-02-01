@@ -64,7 +64,8 @@
   font-weight: 400;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
+  color: black;
+  /* color: white; */
   margin-bottom: 20px;
   display: block;
 }
@@ -73,18 +74,37 @@
   font-family: var(--font-heading);;
   font-size: 5rem;
   font-weight: 400;
-  color: white;
+  color: black;
+  /* color: white; */
   line-height: 1.1;
   margin-bottom: 25px;
   letter-spacing: -1px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+.about-hero-logo-wrapper {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-hero-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.about-hero-inline-logo {
+  flex-shrink: 0;
+}
+
 .about-hero-description {
   font-family: var(--font-body);
   font-size: 1.5rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.9);
+  color: black;
+  /* color: white; */
   line-height: 1.6;
   max-width: 600px;
   margin: 0 auto;

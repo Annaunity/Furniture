@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
+import ScandolaLogo from '../../ScandolaLogo';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,6 +57,7 @@ const Header = () => {
       <div className="container">
         <div className="header-content">
           <Link to="/" className="logo" onClick={handleLogoClick}>
+            <ScandolaLogo size={33} /> 
             <span className="logo-text">SCANDOLA</span>
           </Link>
           <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>

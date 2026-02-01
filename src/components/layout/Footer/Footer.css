@@ -18,6 +18,9 @@
 }
 
 .footer-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-heading);
   font-size: 1.15rem;
   margin-top: 15px;
@@ -26,6 +29,10 @@
   font-weight: 600;
   letter-spacing: 0.3px;
   text-transform: uppercase;
+}
+
+.footer-title-logo {
+  flex-shrink: 0;
 }
 
 .footer-address {

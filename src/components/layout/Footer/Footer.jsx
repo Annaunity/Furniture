@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Footer.css';
+import ScandolaLogo from '../../ScandolaLogo';
+
 
 const Footer = ({ visible = true }) => {
   const [formData, setFormData] = useState({
@@ -69,8 +71,11 @@ const Footer = ({ visible = true }) => {
         <div className="footer-content">
           
           {/* Колонка 1: Scandola */}
-          <div className="footer-column">
-            <h3 className="footer-title">Scandola</h3>
+            <div className="footer-column">
+            <h3 className="footer-title">
+              <ScandolaLogo size={16} className="footer-title-logo" />
+              Scandola
+            </h3>
             <div className="footer-address">
               <div className="address-lines">
                 <p>Улица Труда, 7</p>

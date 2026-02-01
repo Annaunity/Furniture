@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import './Contacts.css';
 
+// Импортируем иконки
+import telephoneIcon from '../../assets/images/telephone.png';
+import emailIcon from '../../assets/images/email.png';
+import locationIcon from '../../assets/images/location.png';
+
 const Contacts = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -97,7 +102,9 @@ const Contacts = () => {
                 {/* Адрес с картой */}
                 <div className="contact-detail-item contact-detail-item-with-map">
                   <div className="contact-header-row">
-                    <div className="contact-icon">📍</div>
+                    <div className="contact-icon">
+                      <img src={locationIcon} alt="Адрес" style={{ width: '30px', height: '30px' }} />
+                    </div>
                     <div className="contact-label">Адрес:</div>
                     <div className="contact-value">г. Санкт-Петербург, ул. Зверинская, д. 12</div>
                   </div>
@@ -120,19 +127,23 @@ const Contacts = () => {
                   </div>
                 </div>
                 
-                {/* Телефон  */}
+                {/* Телефон */}
                 <div className="contact-detail-item">
                   <div className="contact-header-row">
-                    <div className="contact-icon">📞</div>
+                    <div className="contact-icon">
+                      <img src={telephoneIcon} alt="Телефон" style={{ width: '27px', height: '27px' }} />
+                    </div>
                     <div className="contact-label">Телефон:</div>
                     <div className="contact-value">8 921 7726407</div>
                   </div>
                 </div>
                 
-                {/* Email  */}
+                {/* Email */}
                 <div className="contact-detail-item">
                   <div className="contact-header-row">
-                    <div className="contact-icon">✉️</div>
+                    <div className="contact-icon">
+                      <img src={emailIcon} alt="Email" style={{ width: '30px', height: '30px' }} />
+                    </div>
                     <div className="contact-label">Email:</div>
                     <div className="contact-value">info@scandolamobili.ru</div>
                   </div>

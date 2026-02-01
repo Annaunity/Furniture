@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './About.css';
+import ScandolaLogo from '../../components/ScandolaLogo'; 
 
 import aboutHero from '../../assets/images/about.jpg';
 import about1 from '../../assets/images/about1.jpg';
@@ -89,7 +90,10 @@ const About = () => {
         <div className="about-hero-content">
           <div className="about-hero-text-content">
             <div className="about-hero-subtitle">О бренде</div>
-            <h1 className="about-hero-title">SCANDOLA</h1>
+            <h1 className="about-hero-title">
+              <ScandolaLogo size={60} color="white" className="about-hero-inline-logo" />
+              SCANDOLA
+            </h1>
             <div className="about-hero-divider"></div>
             <p className="about-hero-description">
               50 лет итальянского мастерства и инноваций в производстве мебели

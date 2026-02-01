@@ -5,8 +5,16 @@
   position: relative;
 }
 
+.project-section {
+  margin-bottom: 30px;
+}
+
+.project-section:last-child {
+  margin-bottom: 40px;
+}
+
 .project-hero-section {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   position: relative;
 }
 
@@ -45,22 +53,12 @@
   text-transform: none;
 }
 
-.project-designer {
-  text-transform: none;
-  margin-left: 8px;
-}
-
-/* Сетка 6 фото */
-.project-grid-section {
-  margin: 80px auto;
-  max-width: 1400px;
-  padding: 0 40px;
-}
-
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .grid-item {
@@ -79,4 +77,26 @@
   object-fit: cover;
   object-position: center;
   transition: transform 0.6s ease;
+}
+
+.catalog-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.loader-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-border-light);
+  border-top-color: var(--color-accent-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

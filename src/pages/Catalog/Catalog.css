@@ -1,7 +1,7 @@
 .catalog-page {
   min-height: 100vh;
   background-color: var(--color-bg-light);
-  padding: 40px 0 40px;
+  padding: 40px 0 0px;
 }
 
 .catalog-hero-section {
@@ -38,11 +38,7 @@
   gap: 25px;
   margin: 0 auto;
   max-width: 1400px;
-   margin-bottom: 120px;
-}
-
-.catalog-gallery > div:nth-child(3n+2) {
-  transform: translateY(90px);
+  margin-bottom: 20px;
 }
 
 .catalog-item {

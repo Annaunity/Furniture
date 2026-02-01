@@ -66,14 +66,17 @@
   width: 100%;
 }
 
+.contact-icon img {
+  filter: brightness(0); /* Делает иконки черными */
+  opacity: 0.8;
+}
+
 .contact-icon {
-  font-size: 1.5rem;
-  width: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1a1a1a;
-  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
 }
 
 .contact-label {
@@ -149,6 +152,7 @@
   flex-direction: column;
   gap: 25px;
 }
+
 
 .form-row {
   display: grid;
