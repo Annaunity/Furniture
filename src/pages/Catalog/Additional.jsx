@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Catalog.css';
+import additionalCatalog from '../../catalogs/additional_catalog.pdf';
 
 const Additional = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +37,15 @@ const Additional = () => {
     setAdditionalImages(sortedImages);
     setIsLoading(false);
   }, []);
+
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = additionalCatalog;
+    link.download = 'Каталог дополнительных предметов мебели.pdf'; 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   // Группируем фото по сериям (первое число в имени)
   const groupBySeries = (images) => {
@@ -103,6 +113,22 @@ const Additional = () => {
   return (
     <div className="catalog-page">
       <div className="container">
+        <div className="catalog-download-block">
+          <div className="download-content">
+            <p className="download-description">
+              Для скачивания каталога предметов мебели нажмите на кнопку
+            </p>
+            <button className="download-button" onClick={handleDownload}>
+              <img 
+                src="/icons/download.png" 
+                alt="Скачать каталог"
+                className="download-icon"
+              />
+              <span>Скачать каталог дополнительных изделий</span>
+            </button>
+          </div>
+        </div>
+        
         {sections.map((section, sectionIndex) => (
           <div key={sectionIndex} className="catalog-section">
             <section className="catalog-hero-section">

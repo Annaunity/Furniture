@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Catalog.css';
+import kitchenCatalog1 from '../../catalogs/kitchens_catalog_1.pdf';
+import kitchenCatalog2 from '../../catalogs/kitchens_catalog_2.pdf';
+
 
 const Kitchens = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,6 +40,24 @@ const Kitchens = () => {
     setIsLoading(false);
   }, []);
 
+  const handleDownloadCatalog1 = () => {
+    const link = document.createElement('a');
+    link.href = kitchenCatalog1;
+    link.download = 'Каталог кухни ель.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleDownloadCatalog2 = () => {
+    const link = document.createElement('a');
+    link.href = kitchenCatalog2;
+    link.download = 'Каталог кухни дуб.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   if (isLoading) {
     return (
       <div className="catalog-page">
@@ -52,6 +73,32 @@ const Kitchens = () => {
   return (
     <div className="catalog-page">
       <div className="container">
+        <div className="catalog-download-block">
+          <div className="download-content">
+            <p className="download-description">
+              Для скачивания каталога кухонь нажмите на кнопку
+            </p>
+            <div className="kitchen-download-buttons">
+              <button className="download-button-kitchen" onClick={handleDownloadCatalog1}>
+                <img 
+                  src="/icons/download.png" 
+                  alt="Скачать каталог"
+                  className="download-icon"
+                />
+                <span>Каталог кухонь ель</span>
+              </button>
+              <button className="download-button-kitchen" onClick={handleDownloadCatalog2}>
+                <img 
+                  src="/icons/download.png" 
+                  alt="Скачать каталог"
+                  className="download-icon"
+                />
+                <span>Каталог кухонь дуб</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        
         <section className="catalog-hero-section">
           <h1 className="page-title">КУХНИ</h1>
         </section>
