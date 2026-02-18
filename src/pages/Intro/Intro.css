@@ -27,7 +27,7 @@
   opacity: 0;
 }
 
-/* Правая колонка с текстом - минималистичная */
+/* Правая колонка с текстом */
 .intro-text-column {
   width: 50%;
   display: flex;
@@ -49,7 +49,6 @@
   width: 100%;
 }
 
-/* Простой текст с абзацами */
 .quote-text {
   font-family: var(--font-body);
   font-size: 1.2rem;
@@ -63,21 +62,11 @@
 
 .quote-text p {
   margin-bottom: 1.8rem;
-  text-indent: 1.5rem; 
-}
-
-.quote-text p:first-child,
-.quote-text p:nth-child(2),
-.quote-text p:nth-child(3) {
-  font-weight: 400; 
+  text-indent: 1.5rem;
 }
 
 .quote-text p:last-child {
   margin-bottom: 0;
-}
-
-.quote-text p:first-child::first-line {
-  font-weight: 500;
 }
 
 .quote-author {
@@ -103,5 +92,81 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 1024px) {
+  .intro-text-column {
+    padding: 80px 40px;
+  }
+  
+  .quote-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  .intro-page {
+    flex-direction: column;
+  }
+  
+  .intro-image-column {
+    width: 100%;
+    height: 40vh;
+  }
+  
+  .image-container {
+    height: 100%;
+  }
+  
+  .intro-text-column {
+    width: 100%;
+    padding: 40px 20px;
+    min-height: 60vh;
+  }
+  
+  .text-container {
+    max-width: 100%;
+  }
+  
+  .quote-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .quote-text p {
+    margin-bottom: 1.5rem;
+    text-indent: 1rem;
+  }
+  
+  .quote-author {
+    margin-top: 2.5rem;
+  }
+  
+  .author-name {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+}
+
+/* Адаптация для маленьких мобильных устройств */
+@media (max-width: 480px) {
+  .intro-image-column {
+    height: 30vh;
+  }
+  
+  .intro-text-column {
+    padding: 30px 15px;
+  }
+  
+  .quote-text p {
+    text-indent: 0.8rem;
+  }
+  
+  .quote-author {
+    margin-top: 2rem;
   }
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './Catalog.css';
-import bathroomsCatalog from '../../catalogs/bathrooms_catalog.pdf';
 
 const Bathrooms = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,15 +37,6 @@ const Bathrooms = () => {
     setIsLoading(false);
   }, []);
 
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = bathroomsCatalog;
-    link.download = 'Каталог ванные комнаты.pdf'; 
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   if (isLoading) {
     return (
       <div className="catalog-page">
@@ -61,23 +51,7 @@ const Bathrooms = () => {
 
   return (
     <div className="catalog-page">
-      <div className="container">
-        <div className="catalog-download-block">
-          <div className="download-content">
-            <p className="download-description">
-              Для скачивания каталога ванных комнат нажмите на кнопку
-            </p>
-            <button className="download-button" onClick={handleDownload}>
-              <img 
-                src="/icons/download.png" 
-                alt="Скачать каталог"
-                className="download-icon"
-              />
-              <span>Скачать каталог ванных комнат</span>
-            </button>
-          </div>
-        </div>
-        
+      <div className="container">        
         <section className="catalog-hero-section">
           <h1 className="page-title">ВАННЫЕ КОМНАТЫ</h1>
         </section>

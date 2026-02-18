@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './Catalog.css';
-import bedroomCatalog from '../../catalogs/bedrooms_catalog.pdf';
-
 
 const Bedrooms = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,15 +37,6 @@ const Bedrooms = () => {
     setIsLoading(false);
   }, []);
 
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = bedroomCatalog;
-    link.download = 'Каталог спальные зоны.pdf'; 
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   if (isLoading) {
     return (
       <div className="catalog-page">
@@ -62,23 +51,7 @@ const Bedrooms = () => {
 
   return (
     <div className="catalog-page">
-      <div className="container">
-        <div className="catalog-download-block">
-          <div className="download-content">
-            <p className="download-description">
-              Для скачивания каталога спальных зон нажмите на кнопку
-            </p>
-            <button className="download-button" onClick={handleDownload}>
-              <img 
-                src="/icons/download.png" 
-                alt="Скачать каталог"
-                className="download-icon"
-              />
-              <span>Скачать каталог спален</span>
-            </button>
-          </div>
-        </div>
-        
+      <div className="container">        
         <section className="catalog-hero-section">
           <h1 className="page-title">СПАЛЬНАЯ ЗОНА</h1>
         </section>

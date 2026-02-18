@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './Footer.css';
 import ScandolaLogo from '../../ScandolaLogo';
 
-
 const Footer = ({ visible = true }) => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -71,19 +70,17 @@ const Footer = ({ visible = true }) => {
         <div className="footer-content">
           
           {/* Колонка 1: Scandola */}
-            <div className="footer-column">
+          <div className="footer-column">
             <h3 className="footer-title">
-              <ScandolaLogo size={16} className="footer-title-logo" />
+              <ScandolaLogo size={18} className="footer-title-logo" />
               Scandola
             </h3>
             <div className="footer-address">
               <div className="address-lines">
                 <p>Улица Труда, 7</p>
                 <p>37021 Боско Кьезануова (Верона)</p>
-              </div>
-              <div className="contact-lines">
-                <p className="footer-contact">Электронная почта: info@scandolamobili.it</p>
-                <p className="footer-contact">Телефон: +39 045 7050215</p>
+                <p>Электронная почта: info@scandolamobili.it</p>
+                <p>Телефон: +39 045 7050215</p>
               </div>
             </div>
           </div>
@@ -95,10 +92,8 @@ const Footer = ({ visible = true }) => {
               <div className="address-lines">
                 <p>Санкт-Петербург</p>
                 <p>197198 Зверинская, 12</p>
-              </div>
-              <div className="contact-lines">
-                <p className="footer-contact">Электронная почта: info@scandolamobili.ru</p>
-                <p className="footer-contact">Телефон: 8 921 7726407</p>
+                <p>Электронная почта: info@scandolamobili.ru</p>
+                <p>Телефон: +7 921 7726407</p>
               </div>
             </div>
           </div>
@@ -107,9 +102,8 @@ const Footer = ({ visible = true }) => {
           <div className="footer-column">
             <h3 className="footer-title">Связаться с нами</h3>
             <form className="footer-form" onSubmit={handleSubmit} noValidate>
-              {/* Первая строка: Имя+Фамилия и Email */}
               <div className="form-row-top">
-                <div className="form-group full-name">
+                <div className="form-group">
                   <input
                     type="text"
                     name="firstName"
@@ -137,7 +131,6 @@ const Footer = ({ visible = true }) => {
                 </div>
               </div>
               
-              {/* Вторая строка: Телефон, Сообщение и Кнопка */}
               <div className="form-row-middle">
                 <div className="form-group">
                   <input
@@ -177,7 +170,6 @@ const Footer = ({ visible = true }) => {
                 </div>
               </div>
               
-              {/* Успешное сообщение */}
               <div className="form-row-bottom">
                 {submitSuccess && (
                   <p className="footer-success">Сообщение отправлено!</p>

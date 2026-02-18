@@ -134,7 +134,7 @@ const Contacts = () => {
                       <img src={telephoneIcon} alt="Телефон" style={{ width: '27px', height: '27px' }} />
                     </div>
                     <div className="contact-label">Телефон:</div>
-                    <div className="contact-value">8 921 7726407</div>
+                    <div className="contact-value">+7 921 7726407</div>
                   </div>
                 </div>
                 
@@ -221,7 +221,7 @@ const Contacts = () => {
                         id="phone"
                         name="phone"
                         className={`form-input ${formErrors.phone ? 'error' : ''}`}
-                        placeholder="8 921 7726407"
+                        placeholder="+7 921 7726407"
                         value={formData.phone}
                         onChange={handleInputChange}
                         required

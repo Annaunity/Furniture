@@ -2,11 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
 import ScandolaLogo from '../../ScandolaLogo';
+import downloadPdfIcon from '../../../assets/images/download_pdf.svg';
+
+// Импортируем PDF файлы
+import kitchensCatalog1 from '../../../catalogs/kitchens_catalog_1.pdf';
+import kitchensCatalog2 from '../../../catalogs/kitchens_catalog_2.pdf';
+import livingCatalog from '../../../catalogs/living_catalog.pdf';
+import bedroomsCatalog from '../../../catalogs/bedrooms_catalog.pdf';
+import bathroomsCatalog from '../../../catalogs/bathrooms_catalog.pdf';
+import additionalCatalog from '../../../catalogs/additional_catalog.pdf';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
+  const [isProjectsOpen, setIsProjectsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [pdfFiles, setPdfFiles] = useState([]);
+  
   const location = useLocation();
   const navigate = useNavigate();
   
@@ -25,7 +37,61 @@ const Header = () => {
   useEffect(() => {
     setIsMenuOpen(false);
     setIsCatalogOpen(false);
+    setIsProjectsOpen(false);
   }, [location]);
+
+  // Список проектов для дропдауна
+  const projects = [
+    { id: 'malibu-villa', name: 'Малибу Вилла' },
+    { id: 'milan-bar', name: 'Милан Бар' },
+    { id: 'forte-dei-marmi', name: 'Форте-деи-Марми' },
+    { id: 'bibione-apartments', name: 'Бибионе Апартаменты' },
+    { id: 'ostuni-apulia', name: 'Остуни Апулия' },
+    { id: 'pavia-apartment', name: 'Павия Квартира' },
+    { id: 'verona', name: 'Верона' },
+    { id: 'seefeld-torri', name: 'Зеефельд Торри' },
+    { id: 'champoluc-relais', name: 'Шамполюк Реле' },
+    { id: 'carinthia-koller', name: 'Каринтия Коллер' },
+    { id: 'conco-antico', name: 'Конко Антико' },
+    { id: 'escalon-villa', name: 'Эскалон Вилла' }
+  ];
+
+  // Определяем какие PDF скачивать в зависимости от текущей страницы
+  useEffect(() => {
+    const path = location.pathname;
+    
+    // Только на страницах каталога
+    if (path.startsWith('/catalog')) {
+      // Кухни - два каталога
+      if (path.startsWith('/catalog/kitchens')) {
+        setPdfFiles([
+          { file: kitchensCatalog1, name: 'Каталог кухонь ель.pdf' },
+          { file: kitchensCatalog2, name: 'Каталог кухонь дуб.pdf' }
+        ]);
+      } 
+      // Дневная зона
+      else if (path.startsWith('/catalog/living')) {
+        setPdfFiles([{ file: livingCatalog, name: 'Каталог дневной зоны.pdf' }]);
+      } 
+      // Спальни
+      else if (path.startsWith('/catalog/bedrooms')) {
+        setPdfFiles([{ file: bedroomsCatalog, name: 'Каталог спален.pdf' }]);
+      } 
+      // Ванные
+      else if (path.startsWith('/catalog/bathrooms')) {
+        setPdfFiles([{ file: bathroomsCatalog, name: 'Каталог ванных комнат.pdf' }]);
+      } 
+      // Дополнительно
+      else if (path.startsWith('/catalog/additional')) {
+        setPdfFiles([{ file: additionalCatalog, name: 'Каталог дополнительных предметов.pdf' }]);
+      } 
+      else {
+        setPdfFiles([]);
+      }
+    } else {
+      setPdfFiles([]);
+    }
+  }, [location.pathname]);
 
   const handleLogoClick = (e) => {
     if (location.pathname === '/') {
@@ -44,6 +110,16 @@ const Header = () => {
     }
   };
 
+  const handleProjectsClick = (e) => {
+    if (location.pathname.startsWith('/projects')) {
+      e.preventDefault();
+      setIsProjectsOpen(!isProjectsOpen);
+    } else {
+      navigate('/projects/malibu-villa');
+      setIsProjectsOpen(false);
+    }
+  };
+
   const catalogItems = [
     { name: 'Кухни', path: '/catalog/kitchens' },
     { name: 'Дневная зона', path: '/catalog/living' },
@@ -52,14 +128,30 @@ const Header = () => {
     { name: 'Дополнительно', path: '/catalog/additional' },
   ];
 
+  const handleDownloadPDF = () => {
+    if (pdfFiles.length === 0) return;
+    
+    pdfFiles.forEach((pdf, index) => {
+      setTimeout(() => {
+        const link = document.createElement('a');
+        link.href = pdf.file;
+        link.download = pdf.name;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, index * 500);
+    });
+  };
+
   return (
     <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
       <div className="container">
         <div className="header-content">
           <Link to="/" className="logo" onClick={handleLogoClick}>
             <ScandolaLogo size={33} /> 
-            <span className="logo-text">SCANDOLA</span>
+            <span className="logo-text">Scandola</span>
           </Link>
+          
           <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
             <Link to="/intro" className={`nav-link ${location.pathname === '/intro' ? 'active' : ''}`}>
               Введение
@@ -100,9 +192,38 @@ const Header = () => {
               )}
             </div>
 
-            <Link to="/projects" className={`nav-link ${location.pathname === '/projects' ? 'active' : ''}`}>
-              Проекты
-            </Link>
+            <div 
+              className="nav-dropdown"
+              onMouseEnter={() => setIsProjectsOpen(true)}
+              onMouseLeave={() => setIsProjectsOpen(false)}
+            >
+              <Link 
+                to="/projects/malibu-villa" 
+                className={`nav-link ${location.pathname.startsWith('/projects') ? 'active' : ''}`}
+                onClick={handleProjectsClick}
+              >
+                Проекты
+                <span className="dropdown-arrow">▼</span>
+              </Link>
+              {isProjectsOpen && (
+                <div className="dropdown-menu">
+                  {projects.map((project) => (
+                    <Link
+                      key={project.id}
+                      to={`/projects/${project.id}`}
+                      className="dropdown-item"
+                      onClick={() => {
+                        setIsProjectsOpen(false);
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      {project.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <Link to="/partners" className={`nav-link ${location.pathname === '/partners' ? 'active' : ''}`}>
               Партнеры
             </Link>
@@ -111,9 +232,21 @@ const Header = () => {
             </Link>
           </nav>
 
-          <div className="header-contacts">
-            <a href="tel:89217726407" className="header-phone">8 921 7726407</a>
-            <a href="mailto:info@scandola.ru" className="header-email">info@scandola.ru</a>
+          <div className="header-actions">
+            <button 
+              onClick={handleDownloadPDF} 
+              className="header-pdf-btn" 
+              title={pdfFiles.length > 0 ? `Скачать ${pdfFiles.length} файл(ов)` : 'Нет доступных каталогов'}
+              disabled={pdfFiles.length === 0}
+              style={{ opacity: pdfFiles.length === 0 ? 0.3 : 1 }}
+            >
+              <img src={downloadPdfIcon} alt="Download PDF" className="pdf-icon" />
+            </button>
+            
+            <div className="header-contacts">
+              <a href="tel:+79217726407" className="header-phone">+7 921 7726407</a>
+              <a href="mailto:info@scandola.ru" className="header-email">info@scandola.ru</a>
+            </div>
           </div>
         </div>
       </div>
