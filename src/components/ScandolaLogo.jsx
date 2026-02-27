@@ -5,7 +5,7 @@ const ScandolaLogo = ({ size = 24, color = '#1a1a1a', className = '' }) => {
     <img 
       src={scandolaLogo} 
       alt="Scandola" 
-      style={{ width: size, height: size, color: color }}
+      style={{ width: 20, height: size, color: color }}
       className={className}
     />
   );

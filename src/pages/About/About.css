@@ -31,8 +31,8 @@
 .about-text {
   font-family: var(--font-body);
   font-size: 1.2rem;
-  line-height: 2;
-  color: #000000;
+  line-height: 1.8;
+  color: #333;
   font-weight: 400;
   white-space: pre-wrap;
   margin: 0;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
+
 import ScandolaLogo from '../../ScandolaLogo';
 import downloadPdfIcon from '../../../assets/images/download_pdf.svg';
 
@@ -16,6 +17,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+  const [isMobileCatalogOpen, setIsMobileCatalogOpen] = useState(false);
+  const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [pdfFiles, setPdfFiles] = useState([]);
   
@@ -34,10 +37,11 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Закрываем мобильное меню при смене страницы
   useEffect(() => {
     setIsMenuOpen(false);
-    setIsCatalogOpen(false);
-    setIsProjectsOpen(false);
+    setIsMobileCatalogOpen(false);
+    setIsMobileProjectsOpen(false);
   }, [location]);
 
   // Список проектов для дропдауна
@@ -60,28 +64,22 @@ const Header = () => {
   useEffect(() => {
     const path = location.pathname;
     
-    // Только на страницах каталога
     if (path.startsWith('/catalog')) {
-      // Кухни - два каталога
       if (path.startsWith('/catalog/kitchens')) {
         setPdfFiles([
           { file: kitchensCatalog1, name: 'Каталог кухонь ель.pdf' },
           { file: kitchensCatalog2, name: 'Каталог кухонь дуб.pdf' }
         ]);
       } 
-      // Дневная зона
       else if (path.startsWith('/catalog/living')) {
         setPdfFiles([{ file: livingCatalog, name: 'Каталог дневной зоны.pdf' }]);
       } 
-      // Спальни
       else if (path.startsWith('/catalog/bedrooms')) {
         setPdfFiles([{ file: bedroomsCatalog, name: 'Каталог спален.pdf' }]);
       } 
-      // Ванные
       else if (path.startsWith('/catalog/bathrooms')) {
         setPdfFiles([{ file: bathroomsCatalog, name: 'Каталог ванных комнат.pdf' }]);
       } 
-      // Дополнительно
       else if (path.startsWith('/catalog/additional')) {
         setPdfFiles([{ file: additionalCatalog, name: 'Каталог дополнительных предметов.pdf' }]);
       } 
@@ -143,6 +141,10 @@ const Header = () => {
     });
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
       <div className="container">
@@ -152,7 +154,8 @@ const Header = () => {
             <span className="logo-text">Scandola</span>
           </Link>
           
-          <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
+          {/* Десктопная навигация */}
+          <nav className="nav">
             <Link to="/intro" className={`nav-link ${location.pathname === '/intro' ? 'active' : ''}`}>
               Введение
             </Link>
@@ -182,7 +185,6 @@ const Header = () => {
                       className="dropdown-item"
                       onClick={() => {
                         setIsCatalogOpen(false);
-                        setIsMenuOpen(false);
                       }}
                     >
                       {item.name}
@@ -214,7 +216,6 @@ const Header = () => {
                       className="dropdown-item"
                       onClick={() => {
                         setIsProjectsOpen(false);
-                        setIsMenuOpen(false);
                       }}
                     >
                       {project.name}
@@ -246,6 +247,89 @@ const Header = () => {
             <div className="header-contacts">
               <a href="tel:+79217726407" className="header-phone">+7 921 7726407</a>
               <a href="mailto:info@scandola.ru" className="header-email">info@scandola.ru</a>
+            </div>
+
+            {/* Кнопка бургер-меню */}
+            <button 
+              className={`burger-btn ${isMenuOpen ? 'open' : ''}`} 
+              onClick={toggleMenu}
+              aria-label="Меню"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+
+        {/* Мобильное меню */}
+        <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
+          <div className="mobile-nav">
+            <Link to="/intro" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>
+              Введение
+            </Link>
+            <Link to="/about" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>
+              О бренде
+            </Link>
+
+            <div className="mobile-dropdown">
+              <button 
+                className="mobile-dropdown-header"
+                onClick={() => setIsMobileCatalogOpen(!isMobileCatalogOpen)}
+              >
+                Каталог
+                <span className={`mobile-dropdown-arrow ${isMobileCatalogOpen ? 'open' : ''}`}>▼</span>
+              </button>
+              {isMobileCatalogOpen && (
+                <div className="mobile-dropdown-menu">
+                  {catalogItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      className="mobile-dropdown-item"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="mobile-dropdown">
+              <button 
+                className="mobile-dropdown-header"
+                onClick={() => setIsMobileProjectsOpen(!isMobileProjectsOpen)}
+              >
+                Проекты
+                <span className={`mobile-dropdown-arrow ${isMobileProjectsOpen ? 'open' : ''}`}>▼</span>
+              </button>
+              {isMobileProjectsOpen && (
+                <div className="mobile-dropdown-menu">
+                  {projects.map((project) => (
+                    <Link
+                      key={project.id}
+                      to={`/projects/${project.id}`}
+                      className="mobile-dropdown-item"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {project.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <Link to="/partners" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>
+              Партнеры
+            </Link>
+            <Link to="/contacts" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>
+              Контакты
+            </Link>
+
+            <div className="mobile-contacts">
+              <a href="tel:+79217726407" className="mobile-phone">+7 921 7726407</a>
+              <a href="mailto:info@scandola.ru" className="mobile-email">info@scandola.ru</a>
             </div>
           </div>
         </div>

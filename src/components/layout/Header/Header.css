@@ -6,11 +6,12 @@
   width: 100%;
   z-index: 1000;
   border-bottom: 1px solid var(--color-border-light);
-  padding: 0;
+  padding: 10px 0 10px;
   transition: all 0.3s ease;
   height: var(--header-height);
   display: flex;
   align-items: center;
+  box-sizing: border-box; 
 }
 
 .header-scrolled {
@@ -23,7 +24,6 @@
   justify-content: space-between;
   height: 100%;
   width: 100%;
-  padding: 0; /* Отступы уже на body */
 }
 
 /* Логотип */
@@ -44,16 +44,17 @@
 .logo svg,
 .logo img {
   flex-shrink: 0;
-  width: 33px;
+  width: 20x;
   height: 33px;
 }
 
 .logo-text {
   font-family: var(--font-heading);
   font-size: 1.8rem;
+  text-transform: none;
 }
 
-/* Навигация */
+/* Навигация для десктопа */
 .nav {
   display: flex;
   gap: 48px;
@@ -177,6 +178,7 @@
 .header-pdf-btn .pdf-icon {
   width: 60px;
   height: 60px;
+  filter: brightness(0);
 }
 
 /* Контакты */
@@ -200,6 +202,142 @@
 .header-phone:hover,
 .header-email:hover {
   color: var(--color-text-primary);
+}
+
+/* Кнопка бургер-меню */
+.burger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.burger-btn span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-text-primary);
+  transition: all 0.3s ease;
+}
+
+.burger-btn.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.burger-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-btn.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Мобильное меню */
+.mobile-menu {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  background-color: var(--color-bg-card);
+  z-index: 999;
+  overflow-y: auto;
+  padding: 30px var(--container-padding); 
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  box-sizing: border-box;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.mobile-nav-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.mobile-nav-link.active {
+  color: var(--color-accent-gold);
+}
+
+.mobile-dropdown {
+  margin-bottom: 10px;
+}
+
+.mobile-dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 10px 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.mobile-dropdown-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.mobile-dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.mobile-dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 10px 20px;
+  gap: 12px;
+}
+
+.mobile-dropdown-item {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 5px 0;
+}
+
+.mobile-contacts {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border-light);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mobile-phone,
+.mobile-email {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 1rem;
 }
 
 /* Адаптация для планшетов */
@@ -227,25 +365,48 @@
   }
 }
 
-/* Адаптация для мобильных устройств */
+/* Адаптация для мобильных устройств - включаем бургер */
+@media (max-width: 900px) {
+  .nav,
+  .header-contacts {
+    display: none;
+  }
+  
+  .burger-btn {
+    display: flex;
+  }
+  
+  .header-actions {
+    gap: 20px;
+  }
+  
+  .header-pdf-btn {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .header-pdf-btn .pdf-icon {
+    width: 45px;
+    height: 45px;
+  }
+}
+
 @media (max-width: 768px) {
   .header {
-    height: auto;
+    padding: 0 10px; /* Фиксированный паддинг для мобильных */
   }
-  
-  .header-content {
-    flex-wrap: wrap;
-    padding: 10px 0; 
-    gap: 10px;
-  }
-  
+}
+
+/* Адаптация для маленьких мобильных устройств */
+@media (max-width: 480px) {
   .logo {
     font-size: 1.5rem;
+    gap: 5px;
   }
   
   .logo svg,
   .logo img {
-    width: 28px;
+    width: 20px;
     height: 28px;
   }
   
@@ -253,11 +414,6 @@
     font-size: 1.5rem;
   }
   
-  .header-actions {
-    margin-left: auto;
-    gap: 20px;
-  }
-  
   .header-pdf-btn {
     width: 40px;
     height: 40px;
@@ -268,102 +424,16 @@
     height: 40px;
   }
   
-  .header-contacts {
-    gap: 12px;
+  .mobile-menu {
+    padding: 20px 10px;
   }
   
-  .header-phone,
-  .header-email {
-    font-size: 0.85rem;
+  .mobile-nav-link,
+  .mobile-dropdown-header {
+    font-size: 1.1rem;
   }
   
-  .nav {
-    flex: 0 0 100%;
-    width: 100%;
-    margin: 10px 0 0;
-    padding: 10px 0 0;
-    gap: 24px;
-    justify-content: center;
-    flex-wrap: wrap;
-    border-top: 1px solid var(--color-border-light);
-  }
-  
-  .nav-link {
-    font-size: 0.85rem;
-    padding: 5px 0;
-  }
-  
-  .dropdown-menu {
-    min-width: 200px;
-  }
-  
-  .dropdown-item {
-    padding: 10px 20px;
-    font-size: 0.85rem;
-    text-align: center;
-  }
-}
-
-/* Адаптация для маленьких мобильных устройств */
-@media (max-width: 480px) {
-  .header-content {
-    padding: 8px 0;
-    gap: 8px;
-  }
-  
-  .logo {
-    font-size: 1.3rem;
-    gap: 5px;
-  }
-  
-  .logo svg,
-  .logo img {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .logo-text {
-    font-size: 1.3rem;
-  }
-  
-  .header-actions {
-    gap: 15px;
-  }
-  
-  .header-pdf-btn {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .header-pdf-btn .pdf-icon {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .header-contacts {
-    gap: 8px;
-  }
-  
-  .header-phone,
-  .header-email {
-    font-size: 0.75rem;
-  }
-  
-  .nav {
-    gap: 16px;
-  }
-  
-  .nav-link {
-    font-size: 0.75rem;
-    letter-spacing: 0.5px;
-  }
-  
-  .dropdown-menu {
-    min-width: 160px;
-  }
-  
-  .dropdown-item {
-    padding: 8px 12px;
-    font-size: 0.8rem;
+  .mobile-dropdown-item {
+    font-size: 0.95rem;
   }
 }
