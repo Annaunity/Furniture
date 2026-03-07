@@ -20,9 +20,9 @@
 
 .project-hero-content {
   text-align: center;
-  max-width: 800px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 60px;
   position: relative;
 }
 
@@ -59,6 +59,7 @@
   gap: 25px;
   max-width: 1400px;
   margin: 0 auto;
+  padding: 0 60px;
 }
 
 .grid-item {
@@ -100,102 +101,80 @@
     transform: rotate(360deg);
   }
 }
-/* Адаптация для планшетов */
-@media (max-width: 1024px) {
-  .partners-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-  }
-  
-  .partners-main-title {
-    font-size: 2.2rem;
-  }
-  
-  .partner-name {
-    font-size: 1.3rem;
+
+@media (min-width: 1440px) {
+  .project-hero-content,
+  .project-grid {
+    max-width: 1440px;
   }
 }
 
-/* Адаптация для мобильных устройств */
-@media (max-width: 768px) {
-  .partners-simple-header {
-    padding: 30px 0 40px;
+@media (min-width: 1920px) {
+  .project-hero-content,
+  .project-grid {
+    max-width: 1440px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .project-hero-content {
+    padding: 0 40px;
   }
   
-  .partners-main-title {
-    font-size: 2rem;
-  }
-  
-  .partners-grid-section {
-    padding: 10px 0 60px;
-  }
-  
-  .partners-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .project-grid {
+    padding: 0 40px;
     gap: 20px;
   }
   
-  .partner-card {
-    height: 180px;
+  .project-title-main {
+    font-size: 2.2rem;
   }
   
-  .partner-card-inner {
-    padding: 20px;
-  }
-  
-  .partner-name {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-  }
-  
-  .partner-website {
-    font-size: 0.8rem;
-  }
-  
-  .view-website {
-    font-size: 0.75rem;
-    letter-spacing: 1px;
+  .grid-item {
+    height: 280px;
   }
 }
 
-/* Адаптация для маленьких мобильных устройств */
-@media (max-width: 480px) {
-  .partners-simple-header {
-    padding: 20px 0 30px;
+@media (max-width: 768px) {
+  .project-hero-content {
+    padding: 0 30px;
   }
   
-  .partners-main-title {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-  }
-  
-  .partners-grid-section {
-    padding: 10px 0 40px;
-  }
-  
-  .partners-grid {
-    grid-template-columns: 1fr;
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 30px;
     gap: 15px;
   }
   
-  .partner-card {
-    height: 160px;
+  .project-title-main {
+    font-size: 2rem;
   }
   
-  .partner-card-inner {
-    padding: 15px;
+  .project-details {
+    font-size: 1rem;
   }
   
-  .partner-name {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
+  .grid-item {
+    height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-hero-content {
+    padding: 0 20px;
   }
   
-  .partner-website {
-    font-size: 0.75rem;
+  .project-grid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    gap: 15px;
   }
   
-  .view-website {
-    font-size: 0.7rem;
+  .project-title-main {
+    font-size: 1.8rem;
+  }
+  
+  .grid-item {
+    height: 200px;
   }
 }

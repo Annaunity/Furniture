@@ -5,13 +5,9 @@ import './Header.css';
 import ScandolaLogo from '../../ScandolaLogo';
 import downloadPdfIcon from '../../../assets/images/download_pdf.svg';
 
-// Импортируем PDF файлы
+// Импортируем PDF файлы кухонь
 import kitchensCatalog1 from '../../../catalogs/kitchens_catalog_1.pdf';
 import kitchensCatalog2 from '../../../catalogs/kitchens_catalog_2.pdf';
-import livingCatalog from '../../../catalogs/living_catalog.pdf';
-import bedroomsCatalog from '../../../catalogs/bedrooms_catalog.pdf';
-import bathroomsCatalog from '../../../catalogs/bathrooms_catalog.pdf';
-import additionalCatalog from '../../../catalogs/additional_catalog.pdf';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +16,6 @@ const Header = () => {
   const [isMobileCatalogOpen, setIsMobileCatalogOpen] = useState(false);
   const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [pdfFiles, setPdfFiles] = useState([]);
   
   const location = useLocation();
   const navigate = useNavigate();
@@ -60,37 +55,6 @@ const Header = () => {
     { id: 'escalon-villa', name: 'Эскалон Вилла' }
   ];
 
-  // Определяем какие PDF скачивать в зависимости от текущей страницы
-  useEffect(() => {
-    const path = location.pathname;
-    
-    if (path.startsWith('/catalog')) {
-      if (path.startsWith('/catalog/kitchens')) {
-        setPdfFiles([
-          { file: kitchensCatalog1, name: 'Каталог кухонь ель.pdf' },
-          { file: kitchensCatalog2, name: 'Каталог кухонь дуб.pdf' }
-        ]);
-      } 
-      else if (path.startsWith('/catalog/living')) {
-        setPdfFiles([{ file: livingCatalog, name: 'Каталог дневной зоны.pdf' }]);
-      } 
-      else if (path.startsWith('/catalog/bedrooms')) {
-        setPdfFiles([{ file: bedroomsCatalog, name: 'Каталог спален.pdf' }]);
-      } 
-      else if (path.startsWith('/catalog/bathrooms')) {
-        setPdfFiles([{ file: bathroomsCatalog, name: 'Каталог ванных комнат.pdf' }]);
-      } 
-      else if (path.startsWith('/catalog/additional')) {
-        setPdfFiles([{ file: additionalCatalog, name: 'Каталог дополнительных предметов.pdf' }]);
-      } 
-      else {
-        setPdfFiles([]);
-      }
-    } else {
-      setPdfFiles([]);
-    }
-  }, [location.pathname]);
-
   const handleLogoClick = (e) => {
     if (location.pathname === '/') {
       e.preventDefault();
@@ -127,7 +91,11 @@ const Header = () => {
   ];
 
   const handleDownloadPDF = () => {
-    if (pdfFiles.length === 0) return;
+    // Всегда скачиваем файлы кухонь
+    const pdfFiles = [
+      { file: kitchensCatalog1, name: 'Каталог кухонь ель.pdf' },
+      { file: kitchensCatalog2, name: 'Каталог кухонь дуб.pdf' }
+    ];
     
     pdfFiles.forEach((pdf, index) => {
       setTimeout(() => {
@@ -237,9 +205,7 @@ const Header = () => {
             <button 
               onClick={handleDownloadPDF} 
               className="header-pdf-btn" 
-              title={pdfFiles.length > 0 ? `Скачать ${pdfFiles.length} файл(ов)` : 'Нет доступных каталогов'}
-              disabled={pdfFiles.length === 0}
-              style={{ opacity: pdfFiles.length === 0 ? 0.3 : 1 }}
+              title="Скачать каталоги кухонь"
             >
               <img src={downloadPdfIcon} alt="Download PDF" className="pdf-icon" />
             </button>

@@ -1,23 +1,22 @@
 .footer {
   background-color: var(--color-bg-light);
   color: var(--color-text-primary);
-  padding: 10px 0 10px;
+  padding: 10px 0;
   margin-top: auto;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .footer-content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 80px;
+  gap: 40px;
   margin-bottom: 48px;
-  max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .footer-column {
   padding: 0;
+  width: 100%;
 }
 
 .footer-title {
@@ -26,7 +25,7 @@
   gap: 10px;
   font-family: var(--font-heading);
   font-size: 1.2rem;
-  margin: 0 0 32px 0;
+  margin: 0 0 24px 0;
   color: #222;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -35,7 +34,7 @@
 
 .footer-title-logo {
   flex-shrink: 0;
-  width: 10px !important;
+  width: 18px !important;
   height: 18px;
 }
 
@@ -46,7 +45,7 @@
 }
 
 .address-lines p {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   font-weight: 400;
 }
 
@@ -54,11 +53,11 @@
   margin-bottom: 0;
 }
 
-/* Форма */
 .footer-form {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
 }
 
 .form-row-top {
@@ -77,6 +76,7 @@
 .form-group {
   position: relative;
   margin-bottom: 0;
+  width: 100%;
 }
 
 .footer-input,
@@ -93,6 +93,19 @@
   box-sizing: border-box;
   font-weight: 400;
   border-radius: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.footer-textarea {
+  height: 46px;
+  resize: none;
+  overflow: auto;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  white-space: normal;
+  text-overflow: clip;
 }
 
 .footer-input::placeholder,
@@ -106,14 +119,6 @@
 .footer-textarea:focus {
   outline: none;
   border-color: #222;
-}
-
-.footer-textarea {
-  height: 46px;
-  resize: none;
-  overflow: auto;
-  font-size: 0.95rem;
-  line-height: 1.4;
 }
 
 .error-message {
@@ -163,9 +168,10 @@
 
 .footer-bottom {
   text-align: center;
-  padding-top: 0;
+  padding-top: 20px;
   color: #666;
   font-size: 0.9rem;
+  border-top: 1px solid #eee;
 }
 
 .copyright {
@@ -174,41 +180,75 @@
   margin: 0;
 }
 
-/* Адаптация для планшетов */
+@media (min-width: 1440px) {
+  .footer-content {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 @media (max-width: 1024px) {
   .footer-content {
-    gap: 60px;
+    gap: 30px;
   }
   
   .footer-title {
     font-size: 1.1rem;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
   
   .footer-address {
     font-size: 0.9rem;
   }
+  
+  .footer-submit-btn {
+    min-width: 100px;
+    padding: 0 16px;
+  }
 }
 
-/* Адаптация для мобильных устройств */
+@media (max-width: 900px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .footer-column:last-child {
+    grid-column: span 2;
+  }
+  
+  .form-row-middle {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .form-row-middle .form-group:last-child {
+    grid-column: span 2;
+  }
+  
+  .footer-submit-btn {
+    width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   .footer {
-    padding: 40px 0px 40px; 
+    padding: 30px 0;
   }
   
   .footer-content {
     grid-template-columns: 1fr;
     gap: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
   
-  .footer-column {
-    text-align: center;
+  .footer-column:last-child {
+    grid-column: auto;
   }
   
   .footer-title {
-    justify-content: center;
-    margin-bottom: 24px;
+    justify-content: flex-start;
+    margin-bottom: 16px;
     font-size: 1.1rem;
   }
   
@@ -222,27 +262,31 @@
     gap: 12px;
   }
   
+  .form-row-middle .form-group:last-child {
+    grid-column: auto;
+  }
+  
   .footer-submit-btn {
     width: 100%;
   }
   
   .footer-bottom {
+    padding-top: 20px;
     font-size: 0.85rem;
   }
 }
 
-/* Адаптация для маленьких мобильных устройств */
 @media (max-width: 480px) {
   .footer {
-    padding: 32px 0px 32px;
+    padding: 20px 0;
   }
   
   .footer-content {
-    gap: 32px;
+    gap: 30px;
   }
   
   .footer-title {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     font-size: 1rem;
   }
   
@@ -251,7 +295,7 @@
   }
   
   .address-lines p {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   
   .footer-input,
@@ -262,8 +306,17 @@
     padding: 8px 12px;
   }
   
+  .footer-input {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .footer-textarea {
+    height: 42px;
+  }
+  
   .footer-submit-btn {
-    min-width: 100px;
-    padding: 0 16px;
+    min-width: auto;
   }
 }

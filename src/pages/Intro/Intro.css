@@ -10,12 +10,16 @@
   width: 50%;
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .image-container {
   position: relative;
   width: 100%;
   height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
 .main-image {
@@ -27,13 +31,12 @@
   opacity: 0;
 }
 
-/* Правая колонка с текстом */
 .intro-text-column {
   width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px 60px;
+  padding: 100px 60px 100px 40px; /* Уменьшаем левый паддинг */
   position: relative;
   overflow-y: auto;
   background: #fff;
@@ -85,7 +88,6 @@
   padding: 0;
 }
 
-/* Анимация */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -95,10 +97,57 @@
   }
 }
 
-/* Адаптация для планшетов */
+/* Большие экраны - всё центрируется как в хедере */
+@media (min-width: 1440px) {
+  .intro-image-column {
+    justify-content: flex-end; /* Фото прижимаем к центру */
+  }
+  
+  .image-container {
+    max-width: 720px; /* Половина от 1440px */
+    margin-right: 0;
+  }
+  
+  .main-image {
+    max-width: 720px;
+  }
+  
+  .intro-text-column {
+    padding: 120px 60px 120px 40px;
+  }
+  
+  .text-container {
+    max-width: 600px;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 1920px) {
+  .image-container {
+    max-width: 800px;
+  }
+  
+  .main-image {
+    max-width: 800px;
+  }
+  
+  .intro-text-column {
+    padding: 140px 80px 140px 60px;
+  }
+  
+  .text-container {
+    max-width: 700px;
+  }
+  
+  .quote-text {
+    font-size: 1.3rem;
+    line-height: 1.9;
+  }
+}
+
 @media (max-width: 1024px) {
   .intro-text-column {
-    padding: 80px 40px;
+    padding: 80px 40px 80px 30px;
   }
   
   .quote-text {
@@ -107,7 +156,6 @@
   }
 }
 
-/* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
   .intro-page {
     flex-direction: column;
@@ -120,11 +168,12 @@
   
   .image-container {
     height: 100%;
+    max-width: 100%;
   }
   
   .intro-text-column {
     width: 100%;
-    padding: 40px 20px;
+    padding: 40px 30px;
     min-height: 60vh;
   }
   
@@ -152,14 +201,13 @@
   }
 }
 
-/* Адаптация для маленьких мобильных устройств */
 @media (max-width: 480px) {
   .intro-image-column {
     height: 30vh;
   }
   
   .intro-text-column {
-    padding: 30px 15px;
+    padding: 30px 20px;
   }
   
   .quote-text p {

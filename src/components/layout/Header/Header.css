@@ -6,12 +6,12 @@
   width: 100%;
   z-index: 1000;
   border-bottom: 1px solid var(--color-border-light);
-  padding: 10px 0 10px;
+  padding: 0;
   transition: all 0.3s ease;
   height: var(--header-height);
   display: flex;
   align-items: center;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .header-scrolled {
@@ -24,9 +24,11 @@
   justify-content: space-between;
   height: 100%;
   width: 100%;
+  /* padding: 0 60px; */
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
-/* Логотип */
 .logo {
   text-decoration: none;
   color: var(--color-text-primary);
@@ -44,7 +46,7 @@
 .logo svg,
 .logo img {
   flex-shrink: 0;
-  width: 20x;
+  width: 20px;
   height: 33px;
 }
 
@@ -54,14 +56,13 @@
   text-transform: none;
 }
 
-/* Навигация для десктопа */
 .nav {
   display: flex;
-  gap: 48px;
+  gap: 32px;
   align-items: center;
   flex: 1;
   justify-content: center;
-  margin: 0 56px;
+  margin: 0 20px;
 }
 
 .nav-link {
@@ -71,7 +72,7 @@
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
-  padding: 0;
+  padding: 10px 0;
   transition: color 0.3s ease;
   white-space: nowrap;
   line-height: 1;
@@ -85,7 +86,6 @@
   color: var(--color-accent-gold);
 }
 
-/* Дропдаун меню */
 .nav-dropdown {
   position: relative;
   display: inline-block;
@@ -95,6 +95,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  cursor: pointer;
 }
 
 .dropdown-arrow {
@@ -120,12 +121,14 @@
   padding: 8px 0;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.2s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  pointer-events: none;
 }
 
 .nav-dropdown:hover .dropdown-menu {
   opacity: 1;
   visibility: visible;
+  pointer-events: all;
 }
 
 .dropdown-item {
@@ -148,15 +151,13 @@
   color: var(--color-text-primary);
 }
 
-/* Правая часть хедера */
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 56px;
+  gap: 30px;
   flex-shrink: 0;
 }
 
-/* Кнопка PDF */
 .header-pdf-btn {
   display: flex;
   align-items: center;
@@ -181,7 +182,6 @@
   filter: brightness(0);
 }
 
-/* Контакты */
 .header-contacts {
   display: flex;
   align-items: center;
@@ -204,7 +204,6 @@
   color: var(--color-text-primary);
 }
 
-/* Кнопка бургер-меню */
 .burger-btn {
   display: none;
   flex-direction: column;
@@ -237,7 +236,6 @@
   transform: translateY(-9px) rotate(-45deg);
 }
 
-/* Мобильное меню */
 .mobile-menu {
   position: fixed;
   top: var(--header-height);
@@ -247,7 +245,7 @@
   background-color: var(--color-bg-card);
   z-index: 999;
   overflow-y: auto;
-  padding: 30px var(--container-padding); 
+  padding: 20px;
   transform: translateX(100%);
   transition: transform 0.3s ease;
   box-sizing: border-box;
@@ -260,7 +258,7 @@
 .mobile-nav {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -268,7 +266,7 @@
 .mobile-nav-link {
   color: var(--color-text-secondary);
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -281,7 +279,7 @@
 }
 
 .mobile-dropdown {
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .mobile-dropdown-header {
@@ -292,7 +290,7 @@
   background: none;
   border: none;
   padding: 10px 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -314,7 +312,7 @@
   display: flex;
   flex-direction: column;
   padding: 10px 0 10px 20px;
-  gap: 12px;
+  gap: 10px;
 }
 
 .mobile-dropdown-item {
@@ -325,7 +323,7 @@
 }
 
 .mobile-contacts {
-  margin-top: 30px;
+  margin-top: 20px;
   padding-top: 20px;
   border-top: 1px solid var(--color-border-light);
   display: flex;
@@ -340,15 +338,14 @@
   font-size: 1rem;
 }
 
-/* Адаптация для планшетов */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .nav {
-    gap: 32px;
-    margin: 0 40px;
+    gap: 20px;
+    margin: 0 15px;
   }
   
   .header-actions {
-    gap: 40px;
+    gap: 20px;
   }
   
   .header-contacts {
@@ -365,7 +362,29 @@
   }
 }
 
-/* Адаптация для мобильных устройств - включаем бургер */
+@media (max-width: 1024px) {
+  .nav {
+    gap: 15px;
+  }
+  
+  .header-actions {
+    gap: 15px;
+  }
+  
+  .header-contacts {
+    gap: 10px;
+  }
+  
+  .nav-link {
+    font-size: 0.8rem;
+  }
+  
+  .header-phone,
+  .header-email {
+    font-size: 0.8rem;
+  }
+}
+
 @media (max-width: 900px) {
   .nav,
   .header-contacts {
@@ -377,7 +396,7 @@
   }
   
   .header-actions {
-    gap: 20px;
+    gap: 15px;
   }
   
   .header-pdf-btn {
@@ -389,15 +408,32 @@
     width: 45px;
     height: 45px;
   }
-}
-
-@media (max-width: 768px) {
-  .header {
-    padding: 0 10px; /* Фиксированный паддинг для мобильных */
+  
+  .header-content {
+    padding: 0 40px;
   }
 }
 
-/* Адаптация для маленьких мобильных устройств */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 0 30px;
+  }
+  
+  .mobile-menu {
+    padding: 15px;
+  }
+  
+  .mobile-nav-link,
+  .mobile-dropdown-header {
+    font-size: 1rem;
+    padding: 8px 0;
+  }
+  
+  .mobile-dropdown-item {
+    font-size: 0.95rem;
+  }
+}
+
 @media (max-width: 480px) {
   .logo {
     font-size: 1.5rem;
@@ -406,7 +442,7 @@
   
   .logo svg,
   .logo img {
-    width: 20px;
+    width: 18px;
     height: 28px;
   }
   
@@ -424,16 +460,34 @@
     height: 40px;
   }
   
+  .header-actions {
+    gap: 10px;
+  }
+  
+  .header-content {
+    padding: 0 20px;
+  }
+  
   .mobile-menu {
-    padding: 20px 10px;
+    padding: 12px;
+  }
+  
+  .mobile-nav {
+    gap: 15px;
   }
   
   .mobile-nav-link,
   .mobile-dropdown-header {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
   
   .mobile-dropdown-item {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+  }
+  
+  .mobile-contacts {
+    margin-top: 15px;
+    padding-top: 15px;
+    gap: 12px;
   }
 }

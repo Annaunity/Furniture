@@ -8,6 +8,8 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .home-background-image {
@@ -17,7 +19,6 @@
   object-position: center;
 }
 
-/* Стрелка для скролла вниз */
 .scroll-down-arrow {
   position: absolute;
   left: 50%;
@@ -34,7 +35,7 @@
 
 .scroll-down-arrow:hover {
   opacity: 1;
-  transform: scale(1.1);
+  transform: translateX(-50%) scale(1.1);
 }
 
 .scroll-down-arrow svg {
@@ -46,14 +47,26 @@
 
 @keyframes float {
   0%, 100% {
-    transform: translateY(0);
+    transform: translateY(0) translateX(-50%);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-10px) translateX(-50%);
   }
 }
 
-/* Адаптация для планшетов */
+@media (min-width: 1440px) {
+  .home-background-image {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1920px) {
+  .home-background-image {
+    max-width: 1440px;
+  }
+}
+
 @media (max-width: 1024px) {
   .scroll-down-arrow {
     width: 50px;
@@ -62,7 +75,6 @@
   }
 }
 
-/* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
   .scroll-down-arrow {
     width: 45px;
@@ -75,7 +87,6 @@
   }
 }
 
-/* Адаптация для маленьких мобильных устройств */
 @media (max-width: 480px) {
   .scroll-down-arrow {
     width: 40px;
